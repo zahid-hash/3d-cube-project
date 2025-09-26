@@ -1,0 +1,209 @@
+/* General */
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+  perspective: 800px;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Glowing Heading */
+.glow-text {
+  color: cyan;
+  font-size: 36px;
+  text-shadow: 0 0 10px cyan, 0 0 20px cyan, 0 0 30px cyan;
+  margin-bottom: 40px;
+}
+
+/* Cube */
+.cube {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  transform-style: preserve-3d;
+  animation: rotate 6s infinite linear;
+}
+
+.cube:hover {
+  animation-play-state: paused; /* hover -> stop */
+}
+
+.face {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+  border: 2px solid cyan;
+  background: rgba(0, 255, 255, 0.2);
+  box-shadow: 0 0 20px cyan;
+}
+
+.front  { transform: rotateY(0deg) translateZ(100px); }
+.back   { transform: rotateY(180deg) translateZ(100px); }
+.right  { transform: rotateY(90deg) translateZ(100px); }
+.left   { transform: rotateY(-90deg) translateZ(100px); }
+.top    { transform: rotateX(90deg) translateZ(100px); }
+.bottom { transform: rotateX(-90deg) translateZ(100px); }
+
+@keyframes rotate {
+  from { transform: rotateX(0) rotateY(0); }
+  to   { transform: rotateX(360deg) rotateY(360deg); }
+}
+
+/* Tagline */
+.tagline {
+  margin-top: 40px;
+  font-size: 22px;
+  color: #fff;
+  text-shadow: 0 0 10px violet, 0 0 20px cyan, 0 0 30px blue;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .glow-text {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+
+  .cube {
+    width: 140px;
+    height: 140px;
+  }
+
+  .face {
+    width: 140px;
+    height: 140px;
+    font-size: 16px;
+  }
+
+  .front  { transform: rotateY(0deg) translateZ(70px); }
+  .back   { transform: rotateY(180deg) translateZ(70px); }
+  .right  { transform: rotateY(90deg) translateZ(70px); }
+  .left   { transform: rotateY(-90deg) translateZ(70px); }
+  .top    { transform: rotateX(90deg) translateZ(70px); }
+  .bottom { transform: rotateX(-90deg) translateZ(70px); }
+
+  .tagline {
+    font-size: 16px;
+    margin-top: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .glow-text {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  .cube {
+    width: 100px;
+    height: 100px;
+  }
+
+  .face {
+    width: 100px;
+    height: 100px;
+    font-size: 12px;
+  }
+
+  .front  { transform: rotateY(0deg) translateZ(50px); }
+  .back   { transform: rotateY(180deg) translateZ(50px); }
+  .right  { transform: rotateY(90deg) translateZ(50px); }
+  .left   { transform: rotateY(-90deg) translateZ(50px); }
+  .top    { transform: rotateX(90deg) translateZ(50px); }
+  .bottom { transform: rotateX(-90deg) translateZ(50px); }
+
+  .tagline {
+    font-size: 14px;
+    margin-top: 20px;
+  }
+}
+
+
+/* General */
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #000, #111);
+  font-family: Arial, sans-serif;
+}
+
+/* Card Container */
+.card-container {
+  perspective: 1000px;
+}
+
+/* Card */
+.card {
+  width: 280px;
+  height: 180px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s;
+  cursor: pointer;
+}
+
+/* Flip on hover (desktop) */
+.card-container:hover .card {
+  transform: rotateY(180deg);
+}
+
+/* Flip on click (mobile) */
+.card-container:active .card {
+  transform: rotateY(180deg);
+}
+
+/* Card Faces */
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  font-weight: bold;
+  color: white;
+  box-shadow: 0 0 20px rgba(0,255,255,0.5);
+}
+
+/* Front */
+.card-front {
+  background: linear-gradient(135deg, #00f, #0ff);
+}
+
+/* Back */
+.card-back {
+  background: linear-gradient(135deg, #f0f, #f00);
+  transform: rotateY(180deg);
+  font-size: 18px;
+  text-align: center;
+  padding: 10px;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .card {
+    width: 220px;
+    height: 140px;
+  }
+  .card-face {
+    font-size: 18px;
+  }
+}
